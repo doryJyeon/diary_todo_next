@@ -1,8 +1,13 @@
+import TodoFilter from "./(_to_do_list)/TodoFilter";
+import TodoList from "./(_to_do_list)/TodoList";
 import styles from "./page.module.css";
 
-export default function Home() {
+// to-do list
+export default function ToDoList() {
   return (
-    <main className={styles.main}>
-    </main>
+    <>
+      <TodoFilter />
+      <TodoList />
+    </>
   );
 }

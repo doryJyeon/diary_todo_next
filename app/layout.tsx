@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
+import HomeTitle from "./HomeTitle";
+import SideMenu from "./SideMenu";
 
-const inter = Inter({ subsets: ["latin"] });
+const notoSansKR = Noto_Sans_KR({ subsets: ["latin"], weight: ["400", "500", "600", "800"] });
 
 export const metadata: Metadata = {
   title: "Diary & To Do List",
   description: "일기장, 그리고 할 일",
+  icons: {
+    icon: "/images/favicon.png"
+  }
 };
 
 export default function RootLayout({
@@ -16,7 +21,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={inter.className}>{children}</body>
+      <body className={notoSansKR.className}>
+        <HomeTitle />
+        <section className="content__wrap">
+          <article className="content__body">
+            <div className="content__item">
+              {children}
+            </div>
+          </article>
+
+          <SideMenu />
+        </section>
+      </body>
     </html>
   );
 }

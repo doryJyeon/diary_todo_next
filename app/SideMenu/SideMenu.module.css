@@ -13,7 +13,6 @@
   height: 60px;
   transform: rotate(45deg);
   border: none;
-  display: block;
   background-color: #fff;
   word-break: keep-all;
   font-size: 1.3rem;
@@ -27,10 +26,19 @@
     transform: rotate(60deg);
   }
 }
+a.menu__item {
+  display: flex;
+  justify-content: center;
+}
+
 .item__text {
   transform: rotate(-45deg);
   display: block;
   text-align: center;
+}
+button > .item__text {
+  margin-bottom: 12px;
+  margin-left: -10px;
 }
 
 .menu__wrap .menu__item:last-child {

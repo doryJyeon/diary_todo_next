@@ -12,9 +12,9 @@
   margin-bottom: 20px;
 }
 
-.modal__textarea {
+textarea.modal__textarea {
   width: 100%;
-  min-height: 250px;
+  height: 150px;
 }
 
 .text__small {

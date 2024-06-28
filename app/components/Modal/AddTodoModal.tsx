@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import styles from "./Modal.module.css";
 import { Button, Input, Space } from 'antd';
 import { createTodo } from '@/app/utils/TodoUtils';
+import { handleEnterKeyDown } from '@/app/utils/EnterKeyUtils';
 
 const AddTodoModal = () => {
   const [inputText, setInputText] = useState("");
@@ -11,6 +12,8 @@ const AddTodoModal = () => {
   const handelCreateTodo = () => {
     createTodo(inputText);
     setInputText("");
+    // 임시 새로고침, 상태 관리 추가 후 변경 필요
+    window.location.reload();
   }
 
   return (
@@ -22,6 +25,7 @@ const AddTodoModal = () => {
           placeholder='to-do...'
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
+          onKeyDown={(e) => handleEnterKeyDown(e, handelCreateTodo)}
         />
         <Button type="primary" onClick={() => handelCreateTodo()}>추가</Button>
       </Space.Compact>

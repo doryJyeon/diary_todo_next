@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import styles from "./Modal.module.css";
 import { Button, Input } from 'antd';
 import { createTodoMulti } from '@/app/utils/TodoUtils';
+import { handleEnterKeyUp } from '@/app/utils/EnterKeyUtils';
 
 const AddTodoMultiModal = () => {
   const [textValue, setTextValue] = useState("#");
@@ -11,6 +12,13 @@ const AddTodoMultiModal = () => {
   const handelCreateTodo = () => {
     createTodoMulti(textValue);
     setTextValue("#");
+    // 임시 새로고침, 상태 관리 추가 후 변경 필요
+    window.location.reload();
+  }
+
+  // 엔터 키 입력 시 # 추가해주는 함수
+  const handelEnterAdd = () => {
+    setTextValue(textValue + "#");
   }
 
   return (
@@ -21,6 +29,7 @@ const AddTodoMultiModal = () => {
         className={styles.modal__textarea}
         value={textValue}
         onChange={(e) => setTextValue(e.target.value)}
+        onKeyUp={(e) => handleEnterKeyUp(e, handelEnterAdd)}
       />
 
       <p className={styles.text__small}>

@@ -30,20 +30,16 @@ export const TodoReadDesc = () => {
     // 최종 구조에 추가
     sortedTodoData[date.toString()] = sortedItems;
   });
-
   return sortedTodoData;
 }
 
 /**
  * 완전 초기 To-do 생성
  */
-const createFirstTodo = (addText: string) => {
+const createFirstTodo = (fullDate: string, addItems: TodoDataProps) => {
   const newData: TodoListDataProps = {
     [fullDate]: {
-      [0]: {
-        detail: addText,
-        state: "not"
-      }
+      ...addItems
     }
   }
 
@@ -54,6 +50,8 @@ const createFirstTodo = (addText: string) => {
  * 생성 관련 count key return
  */
 const getNextCountkey = (fullDate: string) => {
+  if (TodoData[fullDate] === undefined || TodoData[fullDate] === null) return 0;
+
   const sortedKeys = Object.keys(TodoData[fullDate]).sort((a, b) => parseInt(a) - parseInt(b));
   return (Number(sortedKeys[sortedKeys.length - 1]) + 1) || 0;
 }
@@ -63,19 +61,22 @@ const getNextCountkey = (fullDate: string) => {
  * @param {string} addText
  */
 export const createTodo = (addText: string) => {
-  // 없으면 초기 생성
-  if (TodoData === null || Object.keys(TodoData).length === 0) return createFirstTodo(addText);
-
   const keyCount = getNextCountkey(fullDate);
+  const newItem: TodoDataProps = {
+    [keyCount]: {
+      detail: addText,
+      state: "not"
+    }
+  }
+
+  // 없으면 초기 생성
+  if (TodoData === null || Object.keys(TodoData).length === 0) return createFirstTodo(fullDate, newItem);
 
   const newData: TodoListDataProps = {
     ...TodoData,
     [fullDate]: {
       ...TodoData[fullDate],
-      [keyCount]: {
-        detail: addText,
-        state: "not"
-      }
+      ...newItem
     }
   }
 
@@ -89,4 +90,28 @@ export const createTodo = (addText: string) => {
 export const createTodoMulti = (addText: string) => {
   const keyCount = getNextCountkey(fullDate);
 
+  // # 기준으로 잘라서 newItem 생성, 맨 앞은 null 들어와서 버림
+  const textArr = addText.split("#");
+  textArr.shift();
+
+  const newItem: TodoDataProps = {}
+  textArr.forEach((value: string, index: number) => (
+    newItem[keyCount + index] = {
+      detail: value.replace(/\\n/g, ""),
+      state: "not"
+    }
+  ));
+
+  // 없으면 초기 생성
+  if (TodoData === null || Object.keys(TodoData).length === 0) return createFirstTodo(fullDate, newItem);
+
+  const newData: TodoListDataProps = {
+    ...TodoData,
+    [fullDate]: {
+      ...TodoData[fullDate],
+      ...newItem
+    }
+  }
+
+  updateStorage("todo_list", newData);
 }

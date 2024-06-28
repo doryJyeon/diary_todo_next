@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SideMenu = () => {
+const DelDiaryModal = () => {
   return (
     <div>
 
@@ -8,4 +8,4 @@ const SideMenu = () => {
   );
 }
 
-export default SideMenu;
+export default DelDiaryModal;

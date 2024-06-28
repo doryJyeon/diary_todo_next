@@ -27,8 +27,8 @@
     }
   }
   & > a.active {
-    font-weight: bold;
-    color: var(--font-color);
+    font-weight: 500;
+    color: var(--color-red);
   }
   & > a:last-child {
     margin-right: 0;

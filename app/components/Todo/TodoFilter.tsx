@@ -3,14 +3,15 @@
 import React from 'react';
 import styles from "./Todo.module.css";
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { CheckOutlined } from '@ant-design/icons';
 
 const TodoFilter = () => {
-  const { type = "all" } = useParams();
+  const params = useSearchParams();
+  const type = params.get("type");
 
   const links = [
-    { href: '/', label: '전체', type: 'all' },
+    { href: '/', label: '전체', type: null },
     { href: '/?type=not', label: '미완료', type: 'not' },
     { href: '/?type=done', label: '완료', type: 'done' },
   ];
@@ -18,7 +19,7 @@ const TodoFilter = () => {
   return (
     <menu className={styles.todo__filter}>
       {links.map((link) => (
-        <Link key={link.type} href={link.href} className={type === link.type ? 'active' : ''}>
+        <Link key={link.type} href={link.href} className={type === link.type ? styles.active : ''}>
           {type === link.type && <CheckOutlined />}
           {link.label}
         </Link>

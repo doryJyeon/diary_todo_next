@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
-import HomeTitle from "./HomeTitle";
-import SideMenu from "./SideMenu";
+import HomeTitle from "./Home/HomeTitle";
+import SideMenu from "./SideMenu/SideMenu";
 
 const notoSansKR = Noto_Sans_KR({ subsets: ["latin"], weight: ["400", "500", "600", "800"] });
 

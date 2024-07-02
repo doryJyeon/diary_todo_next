@@ -5,8 +5,7 @@ import React, { useEffect } from 'react';
 import styles from "./SideMenu.module.css";
 import { BookOutlined, CalendarOutlined, DeleteOutlined, EditOutlined, FileAddOutlined, FileDoneOutlined, FormOutlined } from '@ant-design/icons';
 import { ButtonAction, SideMenuItemProps } from '../interfaces/SideMenuProps';
-import { Button, Modal, Popconfirm, PopconfirmProps } from 'antd';
-import AddTodoModal from '../components/Modal/AddTodoModal';
+import { Button, Modal, Popconfirm } from 'antd';
 import AddTodoMultiModal from '../components/Modal/AddTodoMultiModal';
 import { useModalStore } from '../components/store/useModalStore';
 import { SideMenuActions } from '../utils/SideMenuBtnAction';
@@ -24,7 +23,6 @@ const icons = {
 }
 
 const modals = {
-  "addTodo": <AddTodoModal />,
   "addTodoMulti": <AddTodoMultiModal modalTitle={'To-do list 추가'} />
 }
 

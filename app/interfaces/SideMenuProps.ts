@@ -5,7 +5,7 @@ export interface SideMenuItmesProps {
 }
 
 type Icons = "pencil" | "pencilNote" | "saveFile" | "calendar" | "trash" | "book" | "note";
-type ModalCommand = "addTodo" | "addTodoMulti";
+type ModalCommand = "addTodoMulti";
 export type ButtonAction = "addDiary" | "moveUpdateDiary" | "updateDiary" | "delDiary";
 
 export interface SideMenuItemProps {

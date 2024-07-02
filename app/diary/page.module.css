@@ -43,7 +43,7 @@
       cursor: pointer;
       transition: color .2s linear;
 
-      &:hover {
+      &:hover, &:active {
         color: var(--color-yellow);
       }
 
@@ -65,7 +65,7 @@
     cursor: pointer;
     transition: color .2s linear;
 
-    &:hover {
+    &:hover, &:active {
       color: var(--color-red);
     }
 
@@ -79,7 +79,7 @@
   & > * {
     cursor: auto;
 
-    &:hover{
+    &:hover, &:active{
       color: var(--border-color);
     }
   }
@@ -143,5 +143,69 @@
   /* transition 효과 antd에 있음 */
   &:hover {
     opacity: 1;
+  }
+}
+
+/* mobile */
+@media (max-width: 720px) {
+  .diary__wrap {
+    --title-height: 35px;
+    --title-font-size: 1.35rem;
+    --icons-size: 2rem;
+  }
+  
+  .diary__date, .diary__weather, .diary__feeling,
+  .diary__tomorrow__title {
+    height: var(--title-height);
+    line-height: 35px;
+  }
+  
+  .diary__date {
+    width: 100%;
+    padding: 0;
+    flex-wrap: wrap;
+    height: fit-content;
+  
+    & > .diary__datepicker {
+      width: 100%;
+      font-size: 1.3rem;
+      text-align: right;
+      border-bottom: var(--border);
+    }
+    
+    & > .diary__weather {
+      border-left: none;
+      gap: 20px;
+      justify-content: center;
+      border-bottom: none;
+    }
+  }
+  .diary__feeling {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    height: fit-content;
+    line-height: 1.5;
+    gap: 0 15px;
+  }
+  
+  .diary__content {
+    & > textarea {
+      height: 280px;
+    }
+  }
+  .diary__tomorrow {
+    & > .diary__todo {
+      & > p.small {
+        font-size: 1.1rem;
+        margin-top: 20px;
+      }
+    }
+  }
+  
+  /* calrendar(list) icon */
+  .calendar__icon {
+    height: 30px;
+    padding-top: 0;
+    font-size: 2.6rem;
   }
 }

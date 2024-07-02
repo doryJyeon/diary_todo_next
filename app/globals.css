@@ -30,7 +30,7 @@ html {
 }
 body {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   overflow-x: hidden;
   background: linear-gradient(to top, coral, skyblue), linear-gradient(to right, navy, lightgreen);
   background-blend-mode: screen;
@@ -84,7 +84,6 @@ li {
 /* modal 취소 버튼 */
 .modal__cancel {
   width: 100%;
-  height: 30px;
   margin: 20px 0;
   text-align: right;
 }
@@ -93,7 +92,40 @@ li {
 .ant-picker-calendar-mode-switch {
   display: none;
 }
+.ant-picker-calendar-month-select {
+  margin-right: 3px;
+}
 /* antd 달력 컨텐츠 부분 */
 .ant-picker-calendar-date-content {
   height: 60px !important;
+}
+
+/* mobile */
+@media (max-width: 720px) {
+  .content__wrap {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 15px;
+    min-height: calc(100vh - 80px);
+    gap: 20px;
+    align-items: center;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+  }
+
+  .content__body {
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+
+  /* modal 취소 버튼 */
+  .modal__cancel {
+    margin: 10px 0;
+    font-size: 1.3rem;
+  }
+
+  /* antd 달력 컨텐츠 부분 */
+  .ant-picker-calendar-date-content {
+    height: 45px !important;
+  }
 }

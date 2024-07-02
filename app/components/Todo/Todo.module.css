@@ -72,3 +72,29 @@
     color: var(--font-light);
   }
 }
+
+/* mobile */
+@media (max-width: 720px) {
+  .todo__filter {
+    height: 30px;
+    font-size: 1.5rem;
+    margin: 10px 0;
+  
+    & > a {
+      &::after {
+        height: 1.5rem;
+        margin-top: -.7rem;
+      }
+    }
+  }
+  
+  .list__item {
+    height: 30px;
+    font-size: 1.35rem;
+  
+    & > input[type="checkbox"] {
+      width: 1.4rem;
+      height: 1.4rem;
+    }
+  }
+}

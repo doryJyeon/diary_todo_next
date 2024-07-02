@@ -1,5 +1,5 @@
 import { TodoDataProps, TodoListDataProps } from "../interfaces/TodoProps";
-import { fullDate } from "./DateUtils";
+import { fullDate, getFullDate } from "./DateUtils";
 import { readStorage, updateStorage } from "./LocalStorage";
 
 const TodoData: TodoListDataProps = readStorage("todo_list");
@@ -57,7 +57,7 @@ const getNextCountkey = (fullDate: string) => {
 }
 
 /**
- * To-do list 추가 할 때
+ * To-do list 하나 추가 할 때
  * @param {string} addText
  */
 export const createTodo = (addText: string) => {
@@ -86,9 +86,11 @@ export const createTodo = (addText: string) => {
 /**
  * To-do list 멀티로 여러줄 추가 할 때
  * @param {string} addText
+ * @param {number} addDay : 현재 일자 + {addDay}, 없으면 오늘로 설정
  */
-export const createTodoMulti = (addText: string) => {
-  const keyCount = getNextCountkey(fullDate);
+export const createTodoMulti = (addText: string, addDay?: number) => {
+  const fullDateKey = addDay ? getFullDate(addDay) : fullDate;
+  const keyCount = getNextCountkey(fullDateKey);
 
   // # 기준으로 잘라서 newItem 생성, 맨 앞은 null 들어와서 버림
   const textArr = addText.split("#");
@@ -103,12 +105,12 @@ export const createTodoMulti = (addText: string) => {
   ));
 
   // 없으면 초기 생성
-  if (TodoData === null || Object.keys(TodoData).length === 0) return createFirstTodo(fullDate, newItem);
+  if (TodoData === null || Object.keys(TodoData).length === 0) return createFirstTodo(fullDateKey, newItem);
 
   const newData: TodoListDataProps = {
     ...TodoData,
-    [fullDate]: {
-      ...TodoData[fullDate],
+    [fullDateKey]: {
+      ...TodoData[fullDateKey],
       ...newItem
     }
   }

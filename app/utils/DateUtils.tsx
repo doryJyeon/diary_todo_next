@@ -5,7 +5,8 @@ const nowDate = new Date();
 /**
  * yyyymmdd 현재 일자 반환
 */
-const getFullDate = () => {
+export const getFullDate = (addDay = 0) => {
+  nowDate.setDate(nowDate.getDate() + addDay);
   const monthFormat = nowDate.getMonth() + 1 < 10 ? `0${nowDate.getMonth() + 1}` : nowDate.getMonth() + 1
   const dayFormat = nowDate.getDate() < 10 ? `0${nowDate.getDate()}` : nowDate.getDate()
 

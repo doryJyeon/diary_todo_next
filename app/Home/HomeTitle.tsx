@@ -12,7 +12,7 @@ const HomeTitle = () => {
 
   useEffect(() => {
     pathname === "/" && setTitle("To-do list");
-    pathname === "/diary" && setTitle("일기장");
+    pathname.search(/\/diary/i) === 0 && setTitle("일기장");
   }, [pathname]);
 
   return (

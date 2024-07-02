@@ -7,6 +7,7 @@ export const readStorage = (key: string) => {
     const item = localStorage.getItem(key);
     return item ? JSON.parse(item) : null;
   }
+  return null;
 }
 
 export const updateStorage = (key: string, value: any) => (

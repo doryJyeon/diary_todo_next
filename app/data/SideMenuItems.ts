@@ -16,7 +16,7 @@ export const SideMenuItems: SideMenuItmesProps = {
     1: {
       title: "여러개 추가",
       link: "modal",
-      icon: "pencil",
+      icon: "pencilNote",
       color: "yellow",
       modal: "addTodoMulti"
     },
@@ -27,25 +27,68 @@ export const SideMenuItems: SideMenuItmesProps = {
       color: "red"
     }
   },
-  "diary": {
+
+  "/diary": {
     0: {
       title: "일기 쓰기",
       link: "/diary/create",
-      icon: "pencil",
+      icon: "pencilNote",
       color: "red"
     },
     1: {
-      title: "일기 보기",
+      title: "전체 일기",
       link: "/diary",
       icon: "calendar",
       color: "yellow"
     },
     2: {
+      title: "To-do List",
+      link: "/",
+      icon: "note",
+      color: "mint"
+    }
+  },
+  "/diary/create": {
+    0: {
+      title: "일기 저장",
+      link: "button",
+      icon: "saveFile",
+      color: "red",
+      buttonAction: "addDiary"
+    },
+    1: {
+      title: "전체 일기",
+      link: "/diary",
+      icon: "calendar",
+      color: "yellow"
+    },
+    2: {
+      title: "To-do List",
+      link: "/",
+      icon: "note",
+      color: "mint"
+    }
+  },
+  "/diary/read": {
+    0: {
+      title: "일기 수정",
+      link: "button",
+      icon: "saveFile",
+      color: "red",
+      buttonAction: "moveUpdateDiary"
+    },
+    1: {
       title: "일기 삭제",
-      link: "modal",
+      link: "button",
       icon: "trash",
       color: "navy",
-      modal: "delDiary"
+      buttonAction: "delDiary"
+    },
+    2: {
+      title: "전체 일기",
+      link: "/diary",
+      icon: "calendar",
+      color: "yellow"
     },
     3: {
       title: "To-do List",
@@ -53,5 +96,26 @@ export const SideMenuItems: SideMenuItmesProps = {
       icon: "note",
       color: "mint"
     }
-  }
+  },
+  "/diary/update": {
+    0: {
+      title: "일기 저장",
+      link: "button",
+      icon: "saveFile",
+      color: "red",
+      buttonAction: "updateDiary"
+    },
+    1: {
+      title: "전체 일기",
+      link: "/diary",
+      icon: "calendar",
+      color: "yellow"
+    },
+    2: {
+      title: "To-do List",
+      link: "/",
+      icon: "note",
+      color: "mint"
+    }
+  },
 }

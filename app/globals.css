@@ -30,7 +30,7 @@ html {
 }
 body {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   overflow-x: hidden;
   background: linear-gradient(to top, coral, skyblue), linear-gradient(to right, navy, lightgreen);
   background-blend-mode: screen;
@@ -70,6 +70,7 @@ li {
   border: 1px solid var(--border-color);
   background-color: var(--bg-content);
   border-radius: 2px;
+  margin-bottom: 50px;
 }
 .content__item {
   width: 100%;
@@ -78,4 +79,17 @@ li {
   text-align: left;
   border: 1px solid var(--border-color);
   border-radius: 2px;
+}
+
+/* modal 취소 버튼 */
+.modal__cancel {
+  width: 100%;
+  height: 30px;
+  margin: 20px 0;
+  text-align: right;
+}
+
+/* ant design 달력 month/year 선택부분 hide */
+.ant-picker-calendar-mode-switch {
+  display: none;
 }

@@ -4,13 +4,15 @@ export interface SideMenuItmesProps {
   }
 }
 
-type Icons = "pencil" | "calendar" | "trash" | "book" | "note";
-type ModalCommand = "addTodo" | "addTodoMulti" | "delDiary";
+type Icons = "pencil" | "pencilNote" | "saveFile" | "calendar" | "trash" | "book" | "note";
+type ModalCommand = "addTodo" | "addTodoMulti";
+export type ButtonAction = "addDiary" | "moveUpdateDiary" | "updateDiary" | "delDiary";
 
 export interface SideMenuItemProps {
   title: string
   link: string
   icon: Icons
   color: string,
-  modal?: ModalCommand
+  modal?: ModalCommand,
+  buttonAction?: ButtonAction
 }

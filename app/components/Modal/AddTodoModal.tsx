@@ -5,15 +5,17 @@ import styles from "./Modal.module.css";
 import { Button, Input, Space } from 'antd';
 import { createTodo } from '@/app/utils/TodoUtils';
 import { handleEnterKeyDown } from '@/app/utils/EnterKeyUtils';
+import { useModalStore } from '../store/useModalStore';
 
 const AddTodoModal = () => {
+  const { setModalClose } = useModalStore();
   const [inputText, setInputText] = useState("");
 
   const handelCreateTodo = () => {
     createTodo(inputText);
     setInputText("");
-    // 임시 새로고침, 상태 관리 추가 후 변경 필요
-    window.location.reload();
+
+    setModalClose();
   }
 
   return (

@@ -5,15 +5,22 @@ import styles from "./Modal.module.css";
 import { Button, Input } from 'antd';
 import { createTodoMulti } from '@/app/utils/TodoUtils';
 import { handleEnterKeyUp } from '@/app/utils/EnterKeyUtils';
+import { useModalStore } from '../store/useModalStore';
 
-const AddTodoMultiModal = () => {
+interface Props {
+  modalTitle: string,
+  addDay?: number
+}
+
+const AddTodoMultiModal: React.FC<Props> = ({ modalTitle, addDay }) => {
+  const { setModalClose } = useModalStore();
+
   const [textValue, setTextValue] = useState("#");
 
   const handelCreateTodo = () => {
-    createTodoMulti(textValue);
+    createTodoMulti(textValue, addDay);
     setTextValue("#");
-    // 임시 새로고침, 상태 관리 추가 후 변경 필요
-    window.location.reload();
+    setModalClose();
   }
 
   // 엔터 키 입력 시 # 추가해주는 함수
@@ -23,7 +30,7 @@ const AddTodoMultiModal = () => {
 
   return (
     <div className={styles.modal__wrap}>
-      <h3 className={styles.modal__title}>To-do lists 추가</h3>
+      <h3 className={styles.modal__title}>{modalTitle}</h3>
 
       <Input.TextArea
         className={styles.modal__textarea}

@@ -62,11 +62,3 @@ button > .item__text {
   background-color: var(--color-yellow);
   color: var(--font-black);
 }
-
-/* modal 취소 버튼 */
-.modal__cancel {
-  width: 100%;
-  height: 30px;
-  margin: 20px 0;
-  text-align: right;
-}

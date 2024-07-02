@@ -1,0 +1,129 @@
+.diary__wrap {
+  width: 100%;
+  height: fit-content;
+
+  --title-height: 40px;
+  --title-font-size: 1.5rem;
+  --icons-size: 2.5rem;
+  --border: 1px solid var(--border-color);
+}
+
+/* 공통 css */
+.diary__date, .diary__weather, .diary__feeling,
+.diary__content, .diary__tomorrow__title {
+  width: calc(100% - 20px);
+  border-bottom: var(--border);
+  padding: 0 10px;
+}
+.diary__date, .diary__weather, .diary__feeling,
+.diary__tomorrow__title {
+  height: var(--title-height);
+  line-height: 40px;
+}
+
+.diary__date {
+  font-size: var(--title-font-size);
+  display: flex;
+
+  & > .diary__datepicker {
+    min-width: 125px;
+    font-size: 1.4rem;
+  }
+  
+  & > .diary__weather {
+    font-size: var(--icons-size);
+    color: var(--border-color);
+    border-left: 1px solid var(--border-color);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: start;
+
+    & > * {
+      cursor: pointer;
+      transition: color .2s linear;
+
+      &:hover {
+        color: var(--color-yellow);
+      }
+
+      &.active {
+        color: var(--color-yellow);
+      }
+    }
+  }
+}
+.diary__feeling {
+  font-size: var(--icons-size);
+  color: var(--border-color);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  
+  & > * {
+    cursor: pointer;
+    transition: color .2s linear;
+
+    &:hover {
+      color: var(--color-red);
+    }
+
+    &.active {
+      color: var(--color-red);
+    }
+  }
+}
+/* read 일 때 날씨, 느낌 아이콘 고정 */
+.icon__fixed {
+  & > * {
+    cursor: auto;
+
+    &:hover{
+      color: var(--border-color);
+    }
+  }
+}
+
+.diary__content {
+
+  & > textarea {
+    height: 350px;
+    resize: none;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: var(--color-mint);
+    text-underline-offset: 4px;
+  }
+}
+.diary__tomorrow {
+  width: 100%;
+
+  & > .diary__tomorrow__title {
+    font-size: var(--title-font-size);
+    
+  }
+
+  & > .diary__todo {
+    padding: 5px 10px 10px;
+
+    & > li {
+      display: block;
+      min-height: 20px;
+      margin: 5px 0;
+      text-decoration: underline;
+      text-decoration-color: var(--color-yellow);
+      text-underline-offset: 4px;
+
+      & > span {
+        margin-right: 5px;
+      }
+    }
+
+    & > p.small {
+      font-size: 1.2rem;
+      color: var(--font-light);
+      margin-top: 30px;
+    }
+  }
+}

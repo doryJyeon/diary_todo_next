@@ -33,6 +33,8 @@ const DiaryContent: React.FC<Props> = ({ id, isUpdate }) => {
         value={content}
         onChange={(e) => handelChangeContent(e)}
         readOnly={isRead}
+        autoSize={{ minRows: 12 }}
+        maxLength={30000}
       />
     </div>
   );

@@ -1,37 +1,30 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import type { CalendarProps } from 'antd';
 import { Calendar } from 'antd';
 import type { Dayjs } from 'dayjs';
-
-// 날짜별 content 셋팅
-const getListData = (value: Dayjs) => {
-  let listData: { content: string }[] = [];
-
-  switch (value.date()) {
-    case 1:
-      listData = [
-        { content: "" },
-      ];
-      break;
-    default:
-  }
-  return listData || [];
-};
+import { DiaryListRead } from '@/app/utils/DiaryUtils';
+import { iconsFeeling } from './DiaryIcons';
+import styles from "./../../diary/page.module.css";
 
 const DiaryList: React.FC = () => {
+  const diaryList = DiaryListRead();
+
   const dateCellRender = (value: Dayjs) => {
-    const listData = getListData(value);
-    return (
-      <ul className="events">
-        {listData.map((item) => (
-          <li key={item.content}>
-            {item.content}
-          </li>
-        ))}
-      </ul>
-    );
+    if (diaryList) {
+      const dateString = value.format('YYYYMMDD');
+      const iconData = iconsFeeling[diaryList[dateString]];
+
+      return (
+        <Link href={`/diary/${dateString}`} key={dateString} className={styles.calendar__icon}>
+          {iconData}
+        </Link>
+      );
+    } else {
+      return null
+    }
   };
 
   const cellRender: CalendarProps<Dayjs>['cellRender'] = (current) => {

@@ -93,3 +93,7 @@ li {
 .ant-picker-calendar-mode-switch {
   display: none;
 }
+/* antd 달력 컨텐츠 부분 */
+.ant-picker-calendar-date-content {
+  height: 60px !important;
+}

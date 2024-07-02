@@ -35,12 +35,6 @@ export const SideMenuItems: SideMenuItmesProps = {
       icon: "pencilNote",
       color: "red"
     },
-    1: {
-      title: "전체 일기",
-      link: "/diary",
-      icon: "calendar",
-      color: "yellow"
-    },
     2: {
       title: "To-do List",
       link: "/",

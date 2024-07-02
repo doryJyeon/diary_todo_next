@@ -1,5 +1,5 @@
 import { useDiaryStore } from "../components/store/useDiaryStore";
-import { DiaryDataProps, DiaryOneProps } from "../interfaces/DiaryProps";
+import { DiaryDataProps, DiaryIcons, DiaryOneProps } from "../interfaces/DiaryProps";
 import { createStorage, readStorage, updateStorage } from "./LocalStorage";
 
 const DiaryData: DiaryDataProps = readStorage("diary");
@@ -8,9 +8,15 @@ const DiaryData: DiaryDataProps = readStorage("diary");
 
 /**
  * diary read, 달력에서 사용, 순서 상관 없음
+ * [일자]: feeling 만 전달
  */
-export const DiaryRead = () => {
-  return DiaryData ? DiaryData : null
+export const DiaryListRead = () => {
+  const DateFeelings: DiaryIcons = {};
+  Object.keys(DiaryData).forEach(date => {
+    DateFeelings[date] = DiaryData[date].feeling
+  })
+
+  return DateFeelings !== null ? DateFeelings : null
 }
 
 /**

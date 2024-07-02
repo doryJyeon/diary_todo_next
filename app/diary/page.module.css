@@ -127,3 +127,20 @@
     }
   }
 }
+
+/* calrendar(list) icon */
+.calendar__icon {
+  width: 100%;
+  height: 40px;
+  padding-top: 8px;
+  display: block;
+  font-size: 3rem;
+  text-align: center;
+  color: var(--font-light);
+  opacity: .65;
+
+  /* transition 효과 antd에 있음 */
+  &:hover {
+    opacity: 1;
+  }
+}

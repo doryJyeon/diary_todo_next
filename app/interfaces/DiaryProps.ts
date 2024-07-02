@@ -14,3 +14,8 @@ export interface DiaryOneProps {
   feeling: string
   content: string
 }
+
+// 달력 표시용 아이콘 
+export interface DiaryIcons {
+  [date: string]: string
+}

@@ -1,16 +1,13 @@
-const nowDate = new Date();
-
-
-
 /**
  * yyyymmdd 현재 일자 반환
 */
 export const getFullDate = (addDay = 0) => {
-  nowDate.setDate(nowDate.getDate() + addDay);
-  const monthFormat = nowDate.getMonth() + 1 < 10 ? `0${nowDate.getMonth() + 1}` : nowDate.getMonth() + 1
-  const dayFormat = nowDate.getDate() < 10 ? `0${nowDate.getDate()}` : nowDate.getDate()
+  const today = new Date();
+  today.setDate(today.getDate() + addDay);
+  const monthFormat = today.getMonth() + 1 < 10 ? `0${today.getMonth() + 1}` : today.getMonth() + 1
+  const dayFormat = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate()
 
-  return `${nowDate.getFullYear()}${monthFormat}${dayFormat}`
+  return `${today.getFullYear()}${monthFormat}${dayFormat}`
 }
 export const fullDate = getFullDate();
 

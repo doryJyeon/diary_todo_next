@@ -28,4 +28,6 @@ export const SideMenuActions = (data: DiaryOneProps, action: ButtonAction) => {
       message.success("삭제했습니다.");
       break;
   }
+
+  return "success";
 }

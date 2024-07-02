@@ -48,11 +48,13 @@ const SideMenuItem: React.FC<SideMenuItemProps> = ({
       content: content
     }
 
-    SideMenuActions(diaryData, action);
+    const result = SideMenuActions(diaryData, action);
 
-    // router 이동
-    (action === "addDiary" || action === "updateDiary") && router.push(`/diary/${date}`);
-    action === "delDiary" && router.push(`/diary`);
+    if (result === "success") {
+      // router 이동
+      (action === "addDiary" || action === "updateDiary") && router.push(`/diary/${date}`);
+      action === "delDiary" && router.push(`/diary`);
+    }
   }
 
   useEffect(() => {

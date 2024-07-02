@@ -92,8 +92,9 @@
     resize: none;
     text-decoration: underline;
     text-decoration-style: dashed;
-    text-decoration-color: var(--color-mint);
-    text-underline-offset: 4px;
+    text-decoration-color: var(--border-color);
+    text-underline-offset: 5px;
+    line-height: 1.6;
   }
 }
 .diary__tomorrow {

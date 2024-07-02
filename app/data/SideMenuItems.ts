@@ -7,20 +7,13 @@ import { SideMenuItmesProps } from "../interfaces/SideMenuProps";
 export const SideMenuItems: SideMenuItmesProps = {
   "todo": {
     0: {
-      title: "한 줄 추가",
+      title: "To-do 추가",
       link: "modal",
       icon: "pencil",
       color: "mint",
-      modal: "addTodo"
-    },
-    1: {
-      title: "여러개 추가",
-      link: "modal",
-      icon: "pencilNote",
-      color: "yellow",
       modal: "addTodoMulti"
     },
-    2: {
+    1: {
       title: "일기장 보기",
       link: "/diary",
       icon: "book",
@@ -93,7 +86,7 @@ export const SideMenuItems: SideMenuItmesProps = {
   },
   "/diary/update": {
     0: {
-      title: "일기 저장",
+      title: "수정 저장",
       link: "button",
       icon: "saveFile",
       color: "red",

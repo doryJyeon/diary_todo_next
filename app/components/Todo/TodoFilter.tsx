@@ -12,7 +12,7 @@ interface Props {
 
 const TodoFilter = ({ loading }: Props) => {
   const params = useSearchParams();
-  const type = loading ? null : params.get("type");
+  const type = loading ? null : params.get("type") || null;
 
   const links = [
     { href: '/', label: '전체', type: null },
@@ -21,14 +21,14 @@ const TodoFilter = ({ loading }: Props) => {
   ];
 
   return (
-    <menu className={styles.todo__filter}>
+    <div className={styles.todo__filter}>
       {links.map((link) => (
         <Link key={link.type} href={link.href} className={type === link.type ? styles.active : ''}>
           {type === link.type && <CheckOutlined />}
           {link.label}
         </Link>
       ))}
-    </menu>
+    </div>
   );
 }
 

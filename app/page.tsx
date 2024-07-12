@@ -1,3 +1,5 @@
+"use client";
+
 import { Suspense } from "react";
 import TodoFilter from "./components/Todo/TodoFilter";
 import TodoList from "./components/Todo/TodoList";

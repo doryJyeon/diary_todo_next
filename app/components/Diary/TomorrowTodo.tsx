@@ -16,8 +16,8 @@ const TomorrowTodo = () => {
   const tomorrowTodoList = TomorrowTodoRead();
 
   useEffect(() => {
-    reload && setReload(false)
-  }, [modalOpen, reload]);
+    typeof window !== 'undefined' && reload && setReload(false)
+  }, [modalOpen, reload, setReload]);
 
   // 내일 할 일 to-do 삭제
   const handelDelTomorrowTodo = (todoId: string) => {

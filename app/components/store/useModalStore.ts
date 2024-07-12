@@ -1,4 +1,4 @@
-import zustand from "zustand";
+import { create } from "zustand";
 
 interface Props {
   modalOpen: boolean
@@ -6,8 +6,8 @@ interface Props {
   setModalClose: () => void
 }
 
-export const useModalStore = zustand<Props>((set) => ({
+export const useModalStore = create<Props>((set) => ({
   modalOpen: false,
-  setModalOpen: () => set({ modalOpen: true }),
-  setModalClose: () => set({ modalOpen: false })
+  setModalOpen: () => typeof window !== 'undefined' && set({ modalOpen: true }),
+  setModalClose: () => typeof window !== 'undefined' && set({ modalOpen: false })
 }))

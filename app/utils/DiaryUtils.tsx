@@ -12,7 +12,7 @@ const DiaryData: DiaryDataProps = readStorage("diary");
  */
 export const DiaryListRead = () => {
   const DateFeelings: DiaryIcons = {};
-  Object.keys(DiaryData).forEach(date => {
+  DiaryData && Object.keys(DiaryData).forEach(date => {
     DateFeelings[date] = DiaryData[date].feeling
   })
 

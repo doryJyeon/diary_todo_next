@@ -1,4 +1,4 @@
-import zustand from "zustand"
+import { create } from "zustand"
 
 
 interface CreateProps {
@@ -12,7 +12,7 @@ interface CreateProps {
   setContent: (text: string) => void
 }
 
-export const useDiaryStore = zustand<CreateProps>((set) => ({
+export const useDiaryStore = create<CreateProps>((set) => ({
   date: "",
   weather: "",
   feeling: "",

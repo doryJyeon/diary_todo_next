@@ -1,9 +1,9 @@
 export const createStorage = (key: string, value: any) => (
-  typeof window !== undefined && localStorage.setItem(key, JSON.stringify(value))
+  typeof window !== "undefined" && localStorage.setItem(key, JSON.stringify(value))
 )
 
 export const readStorage = (key: string) => {
-  if (typeof window !== undefined) {
+  if (typeof window !== "undefined") {
     const item = localStorage.getItem(key);
     return item ? JSON.parse(item) : null;
   }
@@ -11,9 +11,9 @@ export const readStorage = (key: string) => {
 }
 
 export const updateStorage = (key: string, value: any) => (
-  typeof window !== undefined && localStorage.setItem(key, JSON.stringify(value))
+  typeof window !== "undefined" && localStorage.setItem(key, JSON.stringify(value))
 )
 
 export const deleteStorage = (key: string) => (
-  typeof window !== undefined && localStorage.removeItem(key)
+  typeof window !== "undefined" && localStorage.removeItem(key)
 )

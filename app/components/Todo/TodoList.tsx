@@ -47,7 +47,7 @@ const TodoList = () => {
 
   useEffect(() => {
     reload && setReload(false);
-  }, [reload, modalOpen]);
+  }, [reload, modalOpen, setReload]);
 
   return (
     <ul className={styles.list__wrap}>

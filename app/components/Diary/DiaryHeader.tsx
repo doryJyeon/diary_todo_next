@@ -60,7 +60,7 @@ const DiaryHeader: React.FC<Props> = ({ id, isUpdate }) => {
         </div>
 
         <ul className={[styles.diary__weather, isRead && styles.icon__fixed].join(" ")}>
-          {Object.entries(iconsWeather).map(([key, item]) => (
+          {iconsWeather && Object.entries(iconsWeather).map(([key, item]) => (
             <div
               className={`${weather === key && styles.active}`}
               onClick={() => handleIconSelet("weather", key)}
@@ -73,7 +73,7 @@ const DiaryHeader: React.FC<Props> = ({ id, isUpdate }) => {
       </div>
 
       <ul className={[styles.diary__feeling, isRead && styles.icon__fixed].join(" ")}>
-        {Object.entries(iconsFeeling).map(([key, item]) => (
+        {iconsFeeling && Object.entries(iconsFeeling).map(([key, item]) => (
           <div
             className={`${feeling === key && styles.active}`}
             onClick={() => handleIconSelet("feeling", key)}

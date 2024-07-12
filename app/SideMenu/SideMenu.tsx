@@ -15,7 +15,7 @@ const SideMenu = () => {
 
   return (
     <aside className={styles.menu__wrap}>
-      {Object.entries(MenuItems).map(([key, value]) => (
+      {MenuItems && Object.entries(MenuItems).map(([key, value]) => (
         <SideMenuItem
           title={value.title}
           link={value.link}

@@ -13,7 +13,7 @@ import { useRenderingStore } from '../store/useRenderingStore';
 const TomorrowTodo = () => {
   const { reload, setReload } = useRenderingStore();
   const { modalOpen, setModalOpen, setModalClose } = useModalStore();
-  const tomorrowTodoList = TomorrowTodoRead();
+  const tomorrowTodoList = typeof window !== 'undefined' && TomorrowTodoRead();
 
   useEffect(() => {
     typeof window !== 'undefined' && reload && setReload(false)
@@ -48,7 +48,7 @@ const TomorrowTodo = () => {
 
       <ul className={styles.diary__todo}>
         {/* 아이콘 클릭하면 id 맞는거 찾아서 삭제 */}
-        {Object.entries(tomorrowTodoList).map(([key, item]) => (
+        {tomorrowTodoList && Object.entries(tomorrowTodoList).map(([key, item]) => (
           <li key={key}>
             <CloseSquareOutlined onClick={() => { handelDelTomorrowTodo(key) }} /> {item.detail}
           </li>

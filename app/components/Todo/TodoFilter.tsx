@@ -6,9 +6,13 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { CheckOutlined } from '@ant-design/icons';
 
-const TodoFilter = () => {
+interface Props {
+  loading?: boolean
+}
+
+const TodoFilter = ({ loading }: Props) => {
   const params = useSearchParams();
-  const type = params.get("type");
+  const type = loading ? null : params.get("type");
 
   const links = [
     { href: '/', label: '전체', type: null },

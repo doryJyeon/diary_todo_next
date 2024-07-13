@@ -20,6 +20,20 @@ export const DiaryListRead = () => {
 }
 
 /**
+ * diary date read, 일기 생성에서 선택 불가 일자 체크용, 순서 상관 없음
+ * 일자만 전달
+ */
+export const DiaryDatesRead = () => {
+  const DiaryData: DiaryDataProps = readStorage("diary");
+  const DateFeelings: string[] = [];
+  DiaryData && Object.keys(DiaryData).forEach(date => {
+    DateFeelings.push(date)
+  })
+
+  return DateFeelings.length > 0 ? DateFeelings : null
+}
+
+/**
  * 1. diary zustand 정보 reset, 저장, 수정, 삭제 전부 실행해줘야함
  * 2. 수정/삭제를 위한 id가 있으면 해당 정보로 바꿔줌
  */

@@ -5,11 +5,12 @@ import styles from "./../../diary/page.module.css";
 import { DatePicker } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
 import { useDiaryStore } from '../store/useDiaryStore';
-import { DiaryDataResetReadId } from '@/app/utils/DiaryUtils';
+import { DiaryDataResetReadId, DiaryDatesRead } from '@/app/utils/DiaryUtils';
 import { fullDateFormat } from '@/app/utils/DateUtils';
 
 import { iconsWeather, iconsFeeling } from './DiaryIcons';
 import { DiaryOneProps } from '@/app/interfaces/DiaryProps';
+import { RangePickerProps } from 'antd/es/date-picker';
 
 // Id 있으면 read, 없으면 create 상태임
 interface Props {
@@ -22,9 +23,13 @@ const DiaryHeader: React.FC<Props> = ({ id, isUpdate }) => {
     date, weather, feeling,
     setDate, setWeather, setFeeling
   } = useDiaryStore();
+  // isRead ? 날씨, 기분 변경 불가 : 날씨, 기분 선택 가능
   const isRead = (id && isUpdate === undefined) ? true : false;
+  // DatePicker에 맞게 값 변경
   const today = dayjs();
   const diaryDate = date ? dayjs(fullDateFormat(date)) : undefined;
+  // DatePicker disabled 표시
+  const dateList = DiaryDatesRead();
 
   // id로 일기 조회 후 zustand 데이터 변경
   useEffect(() => {
@@ -40,6 +45,12 @@ const DiaryHeader: React.FC<Props> = ({ id, isUpdate }) => {
       setFeeling("");
     }
   }, [id]);
+
+  // datePicker day disabled (일기 있는 날 제외)
+  const disabledDate: RangePickerProps['disabledDate'] = (current) => {
+    const existDate = current.format("YYYYMMDD");
+    return dateList?.indexOf(existDate) === -1 ? false : true;
+  };
 
   // create에서 날짜 변경
   const handelChangeDate = (e: Dayjs | "") => {
@@ -64,6 +75,7 @@ const DiaryHeader: React.FC<Props> = ({ id, isUpdate }) => {
             maxDate={today}
             value={date && diaryDate}
             disabled={id ? true : false}
+            disabledDate={disabledDate}
             onChange={(e) => handelChangeDate(e)}
             key={"diaryDate"}
           />

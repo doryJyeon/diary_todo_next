@@ -2,7 +2,6 @@ import { useDiaryStore } from "../components/store/useDiaryStore";
 import { DiaryDataProps, DiaryIcons, DiaryOneProps } from "../interfaces/DiaryProps";
 import { createStorage, readStorage, updateStorage } from "./LocalStorage";
 
-const DiaryData: DiaryDataProps = readStorage("diary");
 
 // diary 생성/수정은 zustand의 정보로 이뤄짐 ===========================!!
 
@@ -11,6 +10,7 @@ const DiaryData: DiaryDataProps = readStorage("diary");
  * [일자]: feeling 만 전달
  */
 export const DiaryListRead = () => {
+  const DiaryData: DiaryDataProps = readStorage("diary");
   const DateFeelings: DiaryIcons = {};
   DiaryData && Object.keys(DiaryData).forEach(date => {
     DateFeelings[date] = DiaryData[date].feeling
@@ -24,6 +24,7 @@ export const DiaryListRead = () => {
  * 2. 수정/삭제를 위한 id가 있으면 해당 정보로 바꿔줌
  */
 export const DiaryDataResetReadId = (dateId?: string) => {
+  const DiaryData: DiaryDataProps = readStorage("diary");
   const { setDate, setWeather, setFeeling, setContent } = useDiaryStore.getState();
 
   if (dateId && DiaryData[dateId] !== null && DiaryData[dateId] !== undefined) {
@@ -31,11 +32,21 @@ export const DiaryDataResetReadId = (dateId?: string) => {
     setWeather(DiaryData[dateId].weather);
     setFeeling(DiaryData[dateId].feeling);
     setContent(DiaryData[dateId].content);
+    return {
+      date: dateId,
+      ...DiaryData[dateId]
+    };
   } else {
     setDate("");
     setWeather("");
     setFeeling("");
     setContent("");
+    return {
+      date: "",
+      weather: "",
+      feeling: "",
+      content: ""
+    };
   }
 }
 
@@ -44,6 +55,7 @@ export const DiaryDataResetReadId = (dateId?: string) => {
  * 생성 시 정보는 zustand에 보관된걸 가져옴
  */
 export const DiaryCreate = (data: DiaryOneProps) => {
+  const DiaryData: DiaryDataProps = readStorage("diary");
   // 로컬 스토리지 없으면 초기 생성
   if (DiaryData === null || DiaryData === undefined) {
     const newDate: DiaryDataProps = {
@@ -65,6 +77,7 @@ export const DiaryCreate = (data: DiaryOneProps) => {
  * update 정보는 zustand에 보관된걸 가져옴
  */
 export const DiaryUpdate = (data: DiaryOneProps) => {
+  const DiaryData: DiaryDataProps = readStorage("diary");
   // 로컬 스토리지 없을 수 없기 때문에 null 검증 안함.
   const newDate: DiaryDataProps = {
     ...DiaryData,
@@ -83,6 +96,7 @@ export const DiaryUpdate = (data: DiaryOneProps) => {
  * @param {string} date 지우고 싶은 날짜
  */
 export const DiaryDelete = (date: string) => {
+  const DiaryData: DiaryDataProps = readStorage("diary");
   if (DiaryData[date]) {
     const newDate: DiaryDataProps = DiaryData;
     delete newDate[date];

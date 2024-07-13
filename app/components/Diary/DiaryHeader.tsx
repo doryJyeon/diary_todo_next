@@ -9,6 +9,7 @@ import { DiaryDataResetReadId } from '@/app/utils/DiaryUtils';
 import { fullDateFormat } from '@/app/utils/DateUtils';
 
 import { iconsWeather, iconsFeeling } from './DiaryIcons';
+import { DiaryOneProps } from '@/app/interfaces/DiaryProps';
 
 // Id 있으면 read, 없으면 create 상태임
 interface Props {
@@ -28,7 +29,12 @@ const DiaryHeader: React.FC<Props> = ({ id, isUpdate }) => {
   // id로 일기 조회 후 zustand 데이터 변경
   useEffect(() => {
     // 리셋
-    DiaryDataResetReadId(id);
+    if (id) {
+      const readStore: DiaryOneProps = DiaryDataResetReadId(id);
+      setDate(readStore.date);
+      setWeather(readStore.weather);
+      setFeeling(readStore.feeling);
+    }
   }, [id]);
 
   // create에서 날짜 변경

@@ -5,6 +5,7 @@ import styles from "./../../diary/page.module.css";
 import Input from 'antd/es/input';
 import { useDiaryStore } from '../store/useDiaryStore';
 import { DiaryDataResetReadId } from '@/app/utils/DiaryUtils';
+import { DiaryOneProps } from '@/app/interfaces/DiaryProps';
 
 // Id 있으면 read, 없으면 create 상태임
 interface Props {
@@ -19,7 +20,10 @@ const DiaryContent: React.FC<Props> = ({ id, isUpdate }) => {
   // id로 일기 조회 후 zustand 데이터 변경
   useEffect(() => {
     // 리셋
-    DiaryDataResetReadId(id);
+    if (id) {
+      const readStore: DiaryOneProps = DiaryDataResetReadId(id);
+      setContent(readStore.content);
+    }
   }, [id]);
 
   const handelChangeContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

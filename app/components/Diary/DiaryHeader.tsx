@@ -28,12 +28,16 @@ const DiaryHeader: React.FC<Props> = ({ id, isUpdate }) => {
 
   // id로 일기 조회 후 zustand 데이터 변경
   useEffect(() => {
-    // 리셋
+    // store 데이터 변경
     if (id) {
       const readStore: DiaryOneProps = DiaryDataResetReadId(id);
       setDate(readStore.date);
       setWeather(readStore.weather);
       setFeeling(readStore.feeling);
+    } else {
+      setDate("");
+      setWeather("");
+      setFeeling("");
     }
   }, [id]);
 

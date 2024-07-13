@@ -25,22 +25,14 @@ export const DiaryListRead = () => {
  */
 export const DiaryDataResetReadId = (dateId?: string) => {
   const DiaryData: DiaryDataProps = readStorage("diary");
-  const { setDate, setWeather, setFeeling, setContent } = useDiaryStore.getState();
 
+  // return 데이터 받아서 setStore 실행
   if (dateId && DiaryData[dateId] !== null && DiaryData[dateId] !== undefined) {
-    setDate(dateId);
-    setWeather(DiaryData[dateId].weather);
-    setFeeling(DiaryData[dateId].feeling);
-    setContent(DiaryData[dateId].content);
     return {
       date: dateId,
       ...DiaryData[dateId]
     };
   } else {
-    setDate("");
-    setWeather("");
-    setFeeling("");
-    setContent("");
     return {
       date: "",
       weather: "",

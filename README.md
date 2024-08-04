@@ -11,6 +11,7 @@ Pc / Tablet / Mobile
 ![diary](https://github.com/user-attachments/assets/f2e203cf-5538-4f10-8113-f43e120c07fc)<br />
 (tablet size)
 
+|데이터 선택 값|
 |-----------|
 |작성 날짜|
 |해당 일의 날씨|

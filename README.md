@@ -20,6 +20,11 @@ Pc / Tablet / Mobile
 |내일 할 일|
 * 내일 할 일 작성 시 선택한 일기 일자가 아닌 현재의 다음 날로 To-do list가 추가됩니다.<br />작성한 일기를 삭제해도 생성된 To-do가 지워지진 않습니다.
 
+![diary-write](https://github.com/user-attachments/assets/4fe4a367-cca8-416b-a8fb-6a5dd9340ba9)<br />
+(일기 작성 pc size.gif)<br />
+![diary-write-todo](https://github.com/user-attachments/assets/090560f9-177d-4899-bf9b-a3a4a3ea975a)<br />
+(내일 할 일 작성 pc size.gif)
+
 #### list page
 ![diary-list](https://github.com/user-attachments/assets/c206b1b8-a8d0-4a38-9a2c-66644fd5288b)<br />
 일기가 작성된 날은 선택했던 느낌의 아이콘이 표시됩니다.<br />

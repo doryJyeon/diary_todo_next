@@ -1,7 +1,7 @@
 "use client";
 
 import { DeleteOutlined } from '@ant-design/icons';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styles from "./Todo.module.css";
 import { updateStorage } from '@/app/utils/LocalStorage';
 import { TodoListDataProps } from '@/app/interfaces/TodoProps';
@@ -16,7 +16,9 @@ const TodoList = () => {
   const { reload, setReload } = useRenderingStore();
   const { modalOpen } = useModalStore();
 
-  const TodoData: TodoListDataProps | null = TodoReadDesc(type);
+  const getTodoData = TodoReadDesc(type);
+  const TodoKey = getTodoData?.dateKeySort; // 날짜 sort한 key 값만 가지고 있음 
+  const TodoData = getTodoData?.TodoData;
 
   // update
   const handelUpdateTodo = (date: string, key: number) => {
@@ -51,10 +53,10 @@ const TodoList = () => {
 
   return (
     <ul className={styles.list__wrap}>
-      {!TodoData || Object.keys(TodoData).length === 0 ? (
+      {!TodoData || !TodoKey || TodoKey.length === 0 ? (
         <li>등록된 할 일이 없습니다.</li>
       ) : (
-        Object.keys(TodoData).map((dateKey) => (
+        TodoKey.map(dateKey => (
           Object.entries(TodoData[dateKey]).map(([key, item]) => (
             <li className={styles.list__item} key={key}>
               <input

@@ -39,20 +39,20 @@ const TodoFiltering = (filter: string) => {
 /**
  * Todo list 읽을 때 날짜별 내림차순 정렬해줌
  * 날짜별로만 순서는 ASC
+ * return sortKey, fullData
  */
 export const TodoReadDesc = (filter: string) => {
   // 필터링 된 todolist
   const TodoData = TodoFiltering(filter);
   if (TodoData === null) return null;
 
-  const sortedTodoData: TodoListDataProps = {};
-  // 날짜별 desc 정렬
-  Object.keys(TodoData)
+  // 날짜 sort
+  const dateKeySort = Object.keys(TodoData)
     .map(date => parseInt(date))
     .sort((a, b) => b - a)
-    .forEach(date => sortedTodoData[date.toString()] = TodoData[date.toString()]); // 숫자로 정렬 후 다시 string으로
+    .map(date => date.toString());
 
-  return sortedTodoData;
+  return { dateKeySort, TodoData };
 }
 
 /**

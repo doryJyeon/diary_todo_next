@@ -1,7 +1,5 @@
-import { useDiaryStore } from "../components/store/useDiaryStore";
 import { DiaryDataProps, DiaryIcons, DiaryOneProps } from "../interfaces/DiaryProps";
 import { createStorage, readStorage, updateStorage } from "./LocalStorage";
-
 
 // diary 생성/수정은 zustand의 정보로 이뤄짐 ===========================!!
 

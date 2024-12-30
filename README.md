@@ -1,9 +1,19 @@
 # Diary & To-do list (Next14)
 
-[사이트 이동](https://jyeon-diary-todo.vercel.app/)
+[구현 사이트 이동](https://jyeon-diary-todo.vercel.app/)
 
-Next14<br />
+Next14  
 Pc / Tablet / Mobile
+
+## 실행 방법
+```
+//npm install
+npm i
+npm run dev
+
+//localhost 접속
+localhost:3000
+```
 
 ## 구현 화면
 ### Diary
@@ -11,7 +21,7 @@ Pc / Tablet / Mobile
 ![diary](https://github.com/user-attachments/assets/f2e203cf-5538-4f10-8113-f43e120c07fc)<br />
 (tablet size)
 
-|데이터 선택 값|
+|데이터|
 |-----------|
 |작성 날짜|
 |해당 일의 날씨|
@@ -32,7 +42,7 @@ Pc / Tablet / Mobile
 ![diary-update](https://github.com/user-attachments/assets/d97cf73f-3345-4ca9-a7e3-7ab3937a4671)<br />
 (수정 화면.gif)
 
-
+---
 ### To-do list
 #### list
 ![todo](https://github.com/user-attachments/assets/af52a8b9-c652-45a6-99e8-f527db6c491a)<br />
